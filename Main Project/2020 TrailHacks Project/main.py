@@ -31,8 +31,8 @@ def oei(ts, ast, orb, tov):
     num = ((ts * 30) + ast + (orb * 2) - tov) * 2
     return num
 
-def pgp(bpm2, bpm1, e2, e1):
-    num2 = ((bpm2 - bpm1) - (e2 - e1)) * 100
+def pgp(ts, e2, e1):
+    num2 = ((ts*100) - (e2 + e1)) * 100
     return num2
 
 class Window:
@@ -124,6 +124,7 @@ class New_Window(): # inherit from main window
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
         title = tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font)
+
         open_img = Image.open('Images/radarchart.png')
         open_img = open_img.resize((250, 250), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(open_img)
