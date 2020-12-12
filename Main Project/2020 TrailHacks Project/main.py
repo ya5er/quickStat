@@ -76,13 +76,7 @@ class New_Window(Window): # inherit from main window
         self.player_stats = self.fetch_player_stats(player_name)
         self.design()
 
-<<<<<<< HEAD
-    def fetch_player_stats(self,player_name):
-        '''
-        yaser's code
-        return the stat list
-        '''
-=======
+
     def fetch_player_stats(self, player_name):
         name = player_name.split()
         if not len(name[1]) <= 5:
@@ -116,10 +110,10 @@ class New_Window(Window): # inherit from main window
         print(ppg)
 
 
->>>>>>> 75e310efd83f80abcbeff307609c4c8e165acde5
-
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
+        tk.Label(self.root, text=self.player_name, background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
+
         
 #----------------------------
 
