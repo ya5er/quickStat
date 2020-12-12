@@ -125,15 +125,16 @@ class New_Window(): # inherit from main window
         print(advanced_stats)
 
         ts_percent = advanced_stats[5]
-        ast = advanced_stats[11]
-        orb = advanced_stats[8]
-        tov = advanced_stats[14]
+        ast_percent = advanced_stats[11]
+        orb_percent = advanced_stats[8]
+        tov_percent = advanced_stats[14]
 
         ppg = statList[-1]
         ast = statList[-6]
         trb = statList[-7]
         efg1 = statList[-83]
         efg2 = statList[-13]
+        self.radarstats = [ppg, ast, trb, oei(ts_percent, ast_percent, orb_percent, tov_percent), pgp(ts_percent, efg2, efg1)]
 
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
