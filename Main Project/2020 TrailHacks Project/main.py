@@ -65,18 +65,24 @@ class Window:
 
         tk.Label(self.root, text="The simplest, most relevant basketball database out there", background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
 
-class New_Window:
+class New_Window(Window): # inherit from main window
     def __init__(self,player_name,root,size,title):
         self.player_name = player_name
         self.new_window = tk.Toplevel(root)
         self.new_window.title(title)
         self.new_window.geometry(size)
+        self.player_stats = self.fetch_player_stats(player_name)
+        self.design()
 
-    def fetch_player_stats(self.player_name):
+    def fetch_player_stats(self,player_name):
         '''
         yaser's code
+        return the stat list
         '''
 
+    def design(self): # configure the second window
+        self.new_window.configure(background=self.gray)
+        
 #----------------------------
 
 main()
