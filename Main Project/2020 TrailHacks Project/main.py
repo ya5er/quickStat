@@ -67,22 +67,20 @@ class Window:
 
         tk.Label(self.root, text="The simplest, most relevant basketball database out there", background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
 
-class New_Window(Window): # inherit from main window
+class New_Window(): # inherit from main window
     def __init__(self,player_name,root,size,title):
         self.player_name = player_name
         self.new_window = tk.Toplevel(root)
         self.new_window.title(title)
         self.new_window.geometry(size)
+        self.new_window.resizable(0,0)
+        self.gray = '#292424'
+        self.orange = '#E68422'
         self.player_stats = self.fetch_player_stats(player_name)
+        self.font = Font(family="MS Reference Sans Serif", size=30, weight="bold")
+        self.font2 = Font(family="MS Reference Sans Serif", size=16, weight="bold")
         self.design()
 
-<<<<<<< HEAD
-    def fetch_player_stats(self,player_name):
-        '''
-        yaser's code
-        return the stat list
-        '''
-=======
     def fetch_player_stats(self, player_name):
         name = player_name.split()
         if not len(name[1]) <= 5:
@@ -105,7 +103,7 @@ class New_Window(Window): # inherit from main window
 
         statList = []
         for stat in per_game_stats:
-          statList.append(stat.getText(separator=' '))
+            statList.append(stat.getText(separator=' '))
 
         ppg = statList[-1]
         ast = statList[-6]
@@ -115,12 +113,16 @@ class New_Window(Window): # inherit from main window
 
         print(ppg)
 
-
->>>>>>> 75e310efd83f80abcbeff307609c4c8e165acde5
-
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
-        
+        tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font).pack(pady=(10,35))
+        open_img = Image.open('Images/radarchart.png')
+        open_img = open_img.resize((250, 250), Image.ANTIALIAS)
+        img = ImageTk.PhotoImage(open_img)
+        picture = tk.Label(self.new_window, image=img)
+        picture.photo = img
+        picture.pack(expand="yes")
+
 #----------------------------
 
 main()
