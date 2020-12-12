@@ -49,7 +49,8 @@ class Window:
         self.search_bar.insert(0, "Search for players, eg. Kawhi Leonard")
 
     def handle_enter(self,txt):
-        print(self.search_bar.get())
+        self.player_name = self.search_bar.get()
+        print(self.player_name)
         self.handle_focus_out('_')
 
     def design(self):
@@ -63,6 +64,8 @@ class Window:
         self.search_bar.bind("<Return>",self.handle_enter)
 
         tk.Label(self.root, text="The simplest, most relevant basketball database out there", background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
+
+#class New_Window:
 
 #----------------------------
 
