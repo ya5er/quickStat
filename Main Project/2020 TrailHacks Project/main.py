@@ -1,7 +1,6 @@
 # IMPORTS
 import tkinter as tk
 from tkinter.font import Font
-from tkinter import *
 from svglib.svglib import svg2rlg
 from PIL import Image, ImageTk
 from reportlab.graphics import renderPM
@@ -51,8 +50,8 @@ class Window:
 
     def handle_enter(self,txt):
         self.player_name = self.search_bar.get()
-        print(self.player_name)
-        self.handle_focus_out('_')
+        second_window = New_Window(self.player_name,self.root,'800x500','Database Information')
+        self.root.withdraw()
 
     def design(self):
         self.root.configure(background=self.gray) # set bg colour on entire window
@@ -66,7 +65,13 @@ class Window:
 
         tk.Label(self.root, text="The simplest, most relevant basketball database out there", background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
 
-#class New_Window:
+class New_Window:
+    def __init__(self,player_name,root,size,title):
+        self.player_name = player_name
+        self.new_window = tk.Toplevel(root)
+        self.new_window.title(title)
+        self.new_window.geometry(size)
+        tk.Label(self.new_window,text="hello, testing")
 
 #----------------------------
 
