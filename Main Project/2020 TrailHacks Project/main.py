@@ -1,6 +1,7 @@
 # IMPORTS
 import tkinter as tk
 from tkinter.font import Font
+from tkinter import *
 from svglib.svglib import svg2rlg
 from PIL import Image, ImageTk
 from reportlab.graphics import renderPM
