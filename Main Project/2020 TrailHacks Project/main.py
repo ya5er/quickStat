@@ -27,6 +27,14 @@ def main():
     convert_svg('radarchart.svg')
     main_window = Window(root,'quickStat','800x500')
 
+def oei(ts, ast, orb, tov):
+    num = ((ts * 30) + ast + (orb * 2) - tov) * 2
+    return num
+
+def pgp(bpm2, bpm1, e2, e1):
+    num2 = ((bpm2 - bpm1) - (e2 - e1)) * 100
+    return num2
+
 class Window:
     def __init__(self,root,title,size):
         self.root = root
