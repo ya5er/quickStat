@@ -73,9 +73,8 @@ class New_Window:
         self.new_window.geometry(size)
 
     def fetch_player_stats(self.player_name):
-
         '''
-        yaser's code 
+        yaser's code
         '''
 
 #----------------------------
