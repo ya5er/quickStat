@@ -39,28 +39,28 @@ class Window:
         self.design()
         self.root.mainloop()
 
-    def handle_focus_in(self):
+    def handle_focus_in(self,_):
         self.search_bar.delete(0, tk.END)
         self.search_bar.config(fg='black')
 
-    def handle_focus_out(self):
+    def handle_focus_out(self,_):
         self.search_bar.delete(0, tk.END)
         self.search_bar.config(fg='grey')
         self.search_bar.insert(0, "Search for players, eg. Kawhi Leonard")
 
-    def handle_enter(self):
+    def handle_enter(self,txt):
         print(self.search_bar.get())
-        self.handle_focus_out()
+        self.handle_focus_out('_')
 
     def design(self):
         self.root.configure(background=self.gray) # set bg colour on entire window
         tk.Label(self.root, text="quickStat", background=self.gray, fg=self.orange, font=self.font).pack(pady=(100,35))
-        self.search_bar = tk.Entry(self.root,bd=1,width=75, relief="groove")
+        self.search_bar = tk.Entry(self.root,bd=1,width=75, relief="groove", fg='grey')
         self.search_bar.pack(ipady=10)
-        self.search_bar.insert("Search for players, eg. Kawhi Leonard")
-        self.search_bar.bind("<FocusIn",self.handle_focus_in())
-        self.search_bar.bind("<FocusOut",self.handle_focus_out())
-        self.search_bar.bind("<Return",self.handle_enter())
+        self.search_bar.insert(0,"Search for players, eg. Kawhi Leonard")
+        self.search_bar.bind("<FocusIn>",self.handle_focus_in)
+        self.search_bar.bind("<FocusOut>",self.handle_focus_out)
+        self.search_bar.bind("<Return>",self.handle_enter)
 
         tk.Label(self.root, text="The simplest, most relevant basketball database out there", background=self.gray, fg=self.orange, font=self.font2).pack(pady=(35,0))
 
