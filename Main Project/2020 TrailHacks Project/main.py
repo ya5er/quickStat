@@ -78,7 +78,7 @@ class New_Window(): # inherit from main window
         self.orange = '#E68422'
         self.player_stats = self.fetch_player_stats(player_name)
         self.font = Font(family="MS Reference Sans Serif", size=30, weight="bold")
-        self.font2 = Font(family="MS Reference Sans Serif", size=16, weight="bold")
+        self.font2 = Font(family="MS Reference Sans Serif", size=10, weight="bold")
         self.design()
 
     def fetch_player_stats(self, player_name):
@@ -115,13 +115,20 @@ class New_Window(): # inherit from main window
 
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
-        tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font).pack(pady=(10,35))
+        title = tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font)
         open_img = Image.open('Images/radarchart.png')
         open_img = open_img.resize((250, 250), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(open_img)
         picture = tk.Label(self.new_window, image=img)
         picture.photo = img
-        picture.pack(expand="yes")
+        info = tk.Message(self.new_window,text="Kawhi Anthony Leonard (/kəˈwaɪ/, born June 29, 1991) is an American professional basketball player for the Los Angeles Clippers of the National Basketball Association (NBA). He played two seasons of college basketball for the San Diego State Aztecs and was named a consensus second-team All-American as a sophomore.", background=self.gray, fg=self.orange, font=self.font2)
+        stats = tk.Message(self.new_window,text="Pts Per Game: 18.57\nRebounds Per Game: 8.9\nAssists Per Game: 5.2\nOEI Rating: 92.45\nPGP Rating: 34.21", background=self.gray, fg=self.orange, font=self.font2)
+
+        title.grid(row=0, column=1, pady=10, columnspan=2,sticky="N") # place title
+        info.grid(row=1,column=0, sticky="E") # place info
+        picture.grid(row=1,column=1,sticky="E") # place radar chart
+        stats.grid(row=2,column=0,columnspan=2)
+
 
 #----------------------------
 
