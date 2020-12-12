@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup, Comment
 #------------------FUNCTIONS
 def create_radar(player_name,stats):
     radar_chart = pygal.Radar(width=500,height=400, style=NeonStyle)
-    radar_chart.title = 'Comparing Businesses'
-    radar_chart.x_labels = ["Customer Service", "Prices", "Popularity", "Product Quality", "Specialty"]
+    radar_chart.title = 'Performance Stats'
+    radar_chart.x_labels = ["PPG", "AST", "TRV", "OEI", "PGP"]
     radar_chart.add(player_name, stats)
     radar_chart.render_to_file("Images/radarchart.svg")
 
@@ -144,13 +144,11 @@ class New_Window(): # inherit from main window
         img = ImageTk.PhotoImage(open_img)
         picture = tk.Label(self.new_window, image=img)
         picture.photo = img
-        info = tk.Message(self.new_window,text="Kawhi Anthony Leonard (/kəˈwaɪ/, born June 29, 1991) is an American professional basketball player for the Los Angeles Clippers of the National Basketball Association (NBA). He played two seasons of college basketball for the San Diego State Aztecs and was named a consensus second-team All-American as a sophomore.", background=self.gray, fg=self.orange, font=self.font2)
-        stats = tk.Message(self.new_window,text="Pts Per Game: 18.57\nRebounds Per Game: 8.9\nAssists Per Game: 5.2\nOEI Rating: 92.45\nPGP Rating: 34.21", background=self.gray, fg=self.orange, font=self.font2)
+        stats = tk.Message(self.new_window,text="Pts Per Game: 18.57\nRebounds Per Game: 8.9\nAssists Per Game: 5.2\nOEI (Offense Efficiency & Impact) Rating: 92.45\nPGP (Player Growth Potential) Rating: 34.21", background=self.gray, fg=self.orange, font=self.font2)
 
-        title.grid(row=0, column=1, pady=10, columnspan=2,sticky="N") # place title
-        info.grid(row=1,column=0, sticky="E") # place info
-        picture.grid(row=1,column=1,sticky="E") # place radar chart
-        stats.grid(row=2,column=0,columnspan=2)
+        title.pack(pady=(15,15)) # place title
+        picture.pack(pady=(0,15)) # place radar chart
+        stats.pack()
 
 
 #----------------------------
