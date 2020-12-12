@@ -71,7 +71,12 @@ class New_Window:
         self.new_window = tk.Toplevel(root)
         self.new_window.title(title)
         self.new_window.geometry(size)
-        tk.Label(self.new_window,text="hello, testing")
+
+    def fetch_player_stats(self.player_name):
+
+        '''
+        yaser's code 
+        '''
 
 #----------------------------
 
