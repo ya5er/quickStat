@@ -56,7 +56,7 @@ class Window:
     def design(self):
         self.root.configure(background=self.gray) # set bg colour on entire window
         tk.Label(self.root, text="quickStat", background=self.gray, fg=self.orange, font=self.font).pack(pady=(100,35))
-        self.search_bar = tk.Entry(self.root,bd=1,width=75, relief="groove", fg='grey')
+        self.search_bar = tk.Entry(self.root,bd=1,width=75, fg='grey')
         self.search_bar.pack(ipady=10)
         self.search_bar.insert(0,"Search for players, eg. Kawhi Leonard")
         self.search_bar.bind("<FocusIn>",self.handle_focus_in)
