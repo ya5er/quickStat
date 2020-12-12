@@ -6,6 +6,8 @@ from PIL import Image, ImageTk
 from reportlab.graphics import renderPM
 import pygal
 from pygal.style import NeonStyle
+import requests
+from bs4 import BeautifulSoup
 
 #------------------FUNCTIONS
 def create_radar(player_name,stats):
@@ -72,10 +74,39 @@ class New_Window:
         self.new_window.title(title)
         self.new_window.geometry(size)
 
-    def fetch_player_stats(self.player_name):
-        '''
-        yaser's code
-        '''
+    def fetch_player_stats(self, player_name):
+        name = player_name.split()
+        if not len(name[1]) <= 5:
+            name[1] = name[1][:5]
+        name[0] = name[0][:2]
+        add_to_url = name[1] + name[0] + "01.html"
+        url = "https://www.basketball-reference.com/players/" + name[1][0] + "/" + add_to_url
+
+        page = requests.get(url)
+        soup = BeautifulSoup(page.content,'html.parser')
+
+        tagName = 'table'
+        className = 'row_summable sortable stats_table now_sortable'
+        idName = "per_game"
+        result = soup.find(tagName, id=idName)
+
+        tagName = 'tbody'
+        result = soup.find(tagName)
+        per_game_stats = result.find_all()
+
+        statList = []
+        for stat in per_game_stats:
+          statList.append(stat.getText(separator=' '))
+
+        ppg = statList[-1]
+        ast = statList[-6]
+        trb = statList[-7]
+        efg1 = statList[-83]
+        efg2 = statList[-13]
+
+        print(ppg)
+
+
 
 #----------------------------
 
