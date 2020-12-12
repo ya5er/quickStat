@@ -27,6 +27,14 @@ def main():
     convert_svg('radarchart.svg')
     main_window = Window(root,'quickStat','800x500')
 
+def oei(ts, ast, orb, tov):
+    num = ((ts * 30) + ast + (orb * 2) - tov) * 2
+    return num
+
+def pgp(ts, e2, e1):
+    num2 = ((ts*100) - (e2 + e1)) * 100
+    return num2
+
 class Window:
     def __init__(self,root,title,size):
         self.root = root
@@ -130,6 +138,7 @@ class New_Window(): # inherit from main window
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
         title = tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font)
+
         open_img = Image.open('Images/radarchart.png')
         open_img = open_img.resize((250, 250), Image.ANTIALIAS)
         img = ImageTk.PhotoImage(open_img)
