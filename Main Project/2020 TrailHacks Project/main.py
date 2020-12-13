@@ -23,8 +23,6 @@ def convert_svg(svg_file):
 
 def main():
     root = tk.Tk()
-    create_radar("Apple",[4,3,5,5,3])
-    convert_svg('radarchart.svg')
     main_window = Window(root,'quickStat','800x500')
 
 def oei(ts, ast, orb, tov):
@@ -32,7 +30,7 @@ def oei(ts, ast, orb, tov):
     return num
 
 def pgp(ts, e2, e1):
-    num2 = ((ts*100) - (e2 + e1)) * 100
+    num2 = ((ts*100) - (e2 + e1))
     return num2
 
 class Window:
@@ -124,21 +122,23 @@ class New_Window(): # inherit from main window
         advanced_stats = tfoots[3].getText(separator=' ').split()
         print(advanced_stats)
 
-        ts_percent = advanced_stats[5]
-        ast_percent = advanced_stats[11]
-        orb_percent = advanced_stats[8]
-        tov_percent = advanced_stats[14]
+        ts_percent = float(advanced_stats[5])
+        ast_percent = float(advanced_stats[11])
+        orb_percent = float(advanced_stats[8])
+        tov_percent = float(advanced_stats[14])
 
-        ppg = statList[-1]
-        ast = statList[-6]
-        trb = statList[-7]
-        efg1 = statList[-83]
-        efg2 = statList[-13]
+        ppg = float(statList[-1])
+        ast = float(statList[-6])
+        trb = float(statList[-7])
+        efg1 = float(statList[-83])
+        efg2 = float(statList[-13])
         self.radarstats = [ppg, ast, trb, oei(ts_percent, ast_percent, orb_percent, tov_percent), pgp(ts_percent, efg2, efg1)]
+        create_radar(player_name, self.radarstats)
+        convert_svg('radarchart.svg')
 
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
-        title = tk.Label(self.new_window, text=self.player_name, background=self.gray, fg=self.orange, font=self.font)
+        title = tk.Label(self.new_window, text=self.player_name.upper(), background=self.gray, fg=self.orange, font=self.font)
 
         open_img = Image.open('Images/radarchart.png')
         open_img = open_img.resize((250, 250), Image.ANTIALIAS)
