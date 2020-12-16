@@ -138,6 +138,8 @@ class New_Window(): # inherit from main window
 
     def design(self): # configure the second window
         self.new_window.configure(background=self.gray)
+        self.new_window.configure(background=self.gray)
+        temp = self.radarstats
         title = tk.Label(self.new_window, text=self.player_name.upper(), background=self.gray, fg=self.orange, font=self.font)
 
         open_img = Image.open('Images/radarchart.png')
@@ -145,7 +147,7 @@ class New_Window(): # inherit from main window
         img = ImageTk.PhotoImage(open_img)
         picture = tk.Label(self.new_window, image=img)
         picture.photo = img
-        stats = tk.Message(self.new_window,text="Pts Per Game: 18.57\nRebounds Per Game: 8.9\nAssists Per Game: 5.2\nOEI (Offense Efficiency & Impact) Rating: 92.45\nPGP (Player Growth Potential) Rating: 34.21", background=self.gray, fg=self.orange, font=self.font2)
+        stats = tk.Message(self.new_window,text="Pts Per Game: " + str(temp[0]) +"\nRebounds Per Game: "+str(temp[2])+"\nAssists Per Game: "+str(temp[1])+"\nOEI (Offense Efficiency & Impact) Rating: "+str(round(temp[3],2))+"\nPGP (Player Growth Potential) Rating: " + str(round(temp[4],1)), background=self.gray, fg=self.orange, font=self.font2)
 
         title.pack(pady=(15,15)) # place title
         picture.pack(pady=(0,15)) # place radar chart
